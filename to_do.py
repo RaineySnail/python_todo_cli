@@ -67,11 +67,15 @@ class TodoList:
                     task = Task(item["title"], item["completed"])
                     self.tasks.append(task)
                     
+    def clear_all_tasks(self):
+        self.tasks.clear()
+        self.save_tasks()
+                    
 def main():
     todo_list = TodoList()
     
     while True:
-        print("\n [1] Просмотреть  [2] Добавить  [3] Выполнено  [4] Удалить  [5] Выйти")
+        print("\n [1] Просмотреть  [2] Добавить  [3] Выполнено  [4] Удалить  [5] Выйти  [6] Очистить весь список")
         choice = input("Выберите действие (1-5): ")
         
         if choice == "1":
@@ -91,6 +95,9 @@ def main():
         elif choice == "5":
             print("Пака пака!")
             break
+        elif choice == "6":
+            todo_list.clear_all_tasks()
+            print("Все задачи удалены!")
         else:
             print('Неверное действие!')
             
